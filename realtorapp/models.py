@@ -15,11 +15,6 @@ class Houses(models.Model):
     def __str__(self):
         return self.title
 
-    
-    # @property
-    # def ngo_list(self):
-    #     return self.Ngo.all().values()
-
 
 class Lands(models.Model):
     title = models.CharField(max_length=100)
@@ -34,7 +29,4 @@ class Lands(models.Model):
 
     def __str__(self):
         return self.title
-
-
-
 
