@@ -152,57 +152,57 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # """
 
 
-# AUTH_USER_MODEL = "account.CustomUser"
+AUTH_USER_MODEL = "account.User"
 
 
 
-# EMAIL_BACKEND = "django.core.mail.backends.smtpt.EmailBackend"
+EMAIL_BACKEND = "django.core.mail.backends.smtpt.EmailBackend"
 
-# # STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-# # STATIC_FILE_STORAGE= 'whitenoise.storage.CompressedManifestStaticFileStorage'
+# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+# STATIC_FILE_STORAGE= 'whitenoise.storage.CompressedManifestStaticFileStorage'
 
-# EMAIL_HOST = 'smtp.gmass.co'
-# EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
-# EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
-# EMAIL_PORT = 465
-# EMAIL_USE_TLS = True
-# EMAIL_USE_SSL = False
-# #'django.core.mail.backends.smtp.EmailBackend'
-# # use smtp wen finishing the job. meanwhile, wen testing use console.
+EMAIL_HOST = 'smtp.gmass.co'
+EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
+EMAIL_PORT = 465
+EMAIL_USE_TLS = True
+EMAIL_USE_SSL = False
+#'django.core.mail.backends.smtp.EmailBackend'
+# use smtp wen finishing the job. meanwhile, wen testing use console.
 
 
-# DEFAULT_FROM_EMAIL = 'King from Rechie <noreply@rechie.com>'
+DEFAULT_FROM_EMAIL = 'King from Rechie <noreply@rechie.com>'
 
-# SITE_NAME = 'Rechie'
+SITE_NAME = 'Rechie'
 
-# DOMAIN = 'Rechie.com'
+DOMAIN = 'Rechie.com'
 
-# DJOSER = {
-#     'ACTIVATION_URL': 'activate/{uid}/{token}',
-#     'SEND_ACTIVATION_EMAIL': True,
-# }
+DJOSER = {
+    'ACTIVATION_URL': 'activate/{uid}/{token}',
+    'SEND_ACTIVATION_EMAIL': True,
+}
 
-# REST_FRAMEWORK = {
-#     'DEFAULT_AUTHENTICATION_CLASSES': ('rest_framework_simplejwt.authentication.JWTAuthentication',),
-# }
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': ('rest_framework_simplejwt.authentication.JWTAuthentication',),
+}
 
-# SIMPLE_JWT = {
-#     'ACCESS_TOKEN_LIFETIME': timedelta(minutes=5),
-#     'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
-#     'ROTATE_REFRESH_TOKENS': True,
-#     'BLACKLIST_AFTER_ROTATION': True,
-#     'UPDATE_LAST_LOGIN': True,
-#     'SIGNING_KEY': SECRET_KEY,
-#     'AUTH_HEADER_TYPES': ('Bearer',),
-# }
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=5),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
+    'ROTATE_REFRESH_TOKENS': True,
+    'BLACKLIST_AFTER_ROTATION': True,
+    'UPDATE_LAST_LOGIN': True,
+    'SIGNING_KEY': SECRET_KEY,
+    'AUTH_HEADER_TYPES': ('Bearer',),
+}
 
-# #swagger documentation
-# SWAGGER_SETTINGS = {
-#     'SECURITY_DEFINITIONS': {
-#         'Bearer': {
-#             'type': 'apiKey',
-#             'name': 'Authorization',
-#             'in': 'header'
-#         }
-#     }
-# }
+#swagger documentation
+SWAGGER_SETTINGS = {
+    'SECURITY_DEFINITIONS': {
+        'Bearer': {
+            'type': 'apiKey',
+            'name': 'Authorization',
+            'in': 'header'
+        }
+    }
+}

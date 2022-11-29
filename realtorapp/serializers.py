@@ -8,7 +8,7 @@ class HousesSerializer(serializers.ModelSerializer):
         model = Houses
         fields = "__all__"
 
-class LandsSerializer(serializers.ModelSerial):
+class LandsSerializer(serializers.ModelSerializer):
     land_list = serializers.ReadOnlyField()
 
     class Meta:
