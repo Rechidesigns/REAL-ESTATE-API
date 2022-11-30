@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
     'realtorapp',
     'phonenumber_field',
@@ -135,21 +136,16 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+STATIC_FILE_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-
-# STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-
-# STATIC_FILE_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-
-
-# DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-# """
-# context_processor ='cart.context_processor.cart_total_amount'
-# """
 
 
 AUTH_USER_MODEL = "account.User"
