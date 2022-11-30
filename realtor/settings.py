@@ -49,7 +49,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'realtorapp',
-    "phonenumber_field",
+    'phonenumber_field',
     'rest_framework',
     'djoser',
     'cloudinary',
@@ -171,11 +171,11 @@ EMAIL_USE_SSL = False
 # use smtp wen finishing the job. meanwhile, wen testing use console.
 
 
-DEFAULT_FROM_EMAIL = 'King from Rechie <noreply@rechie.com>'
+DEFAULT_FROM_EMAIL = 'King from Realtor <noreply@realtor.com>'
 
-SITE_NAME = 'Rechie'
+SITE_NAME = 'Realtor'
 
-DOMAIN = 'Rechie.com'
+DOMAIN = 'Realtor.com'
 
 DJOSER = {
     'ACTIVATION_URL': 'activate/{uid}/{token}',
