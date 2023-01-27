@@ -38,6 +38,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path("", include('realtorapp.urls')),
     path("auth/", include('account.urls')),
+    path("Form/", include('form.urls')),
     path("", schema_view.with_ui('swagger', cache_timeout=0), 
     name='schema-swaggeer-ui'),
 ]

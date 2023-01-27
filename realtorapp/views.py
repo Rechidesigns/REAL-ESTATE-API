@@ -12,6 +12,7 @@ from drf_yasg.utils import swagger_auto_schema
 from rest_framework_simplejwt.authentication import JWTAuthentication
 
 
+
 class HousesView(APIView):
     """
     Retrive all or create new Houses instances
@@ -43,18 +44,10 @@ class HousesView(APIView):
 
             if serializer.is_valid():
                 serializer.save()
+                return Response({"message":"success"}, status = status.HTTP_200_OK)
+            
+            return Response({"message":"failed", "error":serializer.errors}, status = status.HTTP_400_BAD_REQUEST)
 
-                data = {
-                    "message" :"success"
-                    }               
-                return Response(data, status=status.HTTP_201_CREATED)
-            else:
-                data = {
-                    "message" :"failed",
-                    "error" : serializer.error
-                }
-
-                return Response(data, status=status.HTTP_400_BAD_REQUEST)
 
         
 
@@ -79,9 +72,11 @@ class HousesDetailView(APIView):
         serializer = HousesSerializer(obj)
 
         data = {
-            "message" :"success"
+            "message" :"success",
+            "data" : serializer.data
         }
         return Response(data, status=status.HTTP_201_CREATED)
+
 
     @swagger_auto_schema(method="put", request_body=HousesSerializer())
     @action(methods=["PUT"], detail=True)
@@ -90,16 +85,10 @@ class HousesDetailView(APIView):
         serializer = HousesSerializer(obj, data=request.data, partial=True)
         if serializer.is_valid():
             serializer.save()
-            data = {
-                "message" :"success"
-            }
-            return Response(data, status=status.HTTP_201_CREATED)
-        else:
-            data = {
-                "message" :"failed",
-                "errors":serializer.errors
-            }
-            return Response(data, status=status.HTTP_400_BAD_REQUEST)
+            return Response({"message":"success"}, status = status.HTTP_200_OK)
+        
+        return Response({"message":"failed", "error":serializer.errors}, status = status.HTTP_400_BAD_REQUEST)
+
 
     @swagger_auto_schema(method="delete")
     @action(methods=["DELETE"], detail=True)
@@ -145,18 +134,10 @@ class LandsView(APIView):
 
             if serializer.is_valid():
                 serializer.save()
+                return Response({"message":"success"}, status = status.HTTP_200_OK)
+        
+            return Response({"message":"failed", "error":serializer.errors}, status = status.HTTP_400_BAD_REQUEST)
 
-                data = {
-                    "message" :"success"
-                    }               
-                return Response(data, status=status.HTTP_201_CREATED)
-            else:
-                data = {
-                    "message" :"failed",
-                    "error" : serializer.error
-                }
-
-                return Response(data, status=status.HTTP_400_BAD_REQUEST)
 
 
 
@@ -194,18 +175,10 @@ class LandsDetailView(APIView):
         serializer = LandsSerializer(obj, data=request.data, partial=True)
         if serializer.is_valid():
             serializer.save()
-            
-            data ={
-                    "message" : "success",   
-            }
-            return Response(data, status=status.HTTP_201_CREATED)
-          
-        else:
-            data ={
-                    "message" : "Failed", 
-                    "error": serializer.errors 
-            }
-            return Response(data, status=status.HTTP_400_BAD_REQUEST)
+            return Response({"message":"success"}, status = status.HTTP_200_OK)
+        
+        return Response({"message":"failed", "error":serializer.errors}, status = status.HTTP_400_BAD_REQUEST)
+
 
     @swagger_auto_schema(method="delete")
     @action(methods=["DELETE"], detail=True)   

@@ -9,34 +9,28 @@ https://docs.djangoproject.com/en/4.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
-
 import os
 from pathlib import Path
 from dotenv import load_dotenv, find_dotenv
 load_dotenv(find_dotenv())
 from django.utils.timezone import timedelta
 
-
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.getenv('SECRET_KEY')
 
 CLOUD_NAME = os.getenv('CLOUD_NAME')
 API_KEY = os.getenv('CLOUD_KEY')
 API_SECRET = os.getenv('CLOUD_SECRET_KEY')
 
-
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
-
 
 # Application definition
 
@@ -55,6 +49,7 @@ INSTALLED_APPS = [
     'cloudinary',
     'drf_yasg',
     'account',
+    'form',
 ]
 
 MIDDLEWARE = [
@@ -89,13 +84,22 @@ TEMPLATES = [
 WSGI_APPLICATION = 'realtor.wsgi.application'
 
 
-import dj_database_url
+# import dj_database_url
 
-DATABASE_URL = os.getenv("DATABASE_URL")
+# DATABASE_URL = os.getenv("DATABASE_URL")
+
+# DATABASES = {
+#     "default": dj_database_url.config(default=DATABASE_URL, conn_max_age=1800),
+# }
+
 
 DATABASES = {
-    "default": dj_database_url.config(default=DATABASE_URL, conn_max_age=1800),
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
 }
+
 
 
 
@@ -151,7 +155,9 @@ AUTH_USER_MODEL = "account.User"
 
 
 
-EMAIL_BACKEND = "django.core.mail.backends.smtpt.EmailBackend"
+# EMAIL_BACKEND = "django.core.mail.backends.smtpt.EmailBackend"
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 # STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 # STATIC_FILE_STORAGE= 'whitenoise.storage.CompressedManifestStaticFileStorage'
