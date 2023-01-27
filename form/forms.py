@@ -11,6 +11,6 @@ class BookInspectionForm(ModelForm):
 form = BookInspectionForm()
 
 
-# bookinspection = BookInspection.objects.get(pk=1)
-# form = BookInspectionForm(instance=bookinspection)
+bookinspection = BookInspection.objects.get(pk=1)
+form = BookInspectionForm(instance=bookinspection)
 
