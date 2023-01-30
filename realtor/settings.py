@@ -15,6 +15,7 @@ from dotenv import load_dotenv, find_dotenv
 load_dotenv(find_dotenv())
 from django.utils.timezone import timedelta
 
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -23,9 +24,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = os.getenv('SECRET_KEY')
 
-CLOUD_NAME = os.getenv('CLOUD_NAME')
-API_KEY = os.getenv('CLOUD_KEY')
-API_SECRET = os.getenv('CLOUD_SECRET_KEY')
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': 'kingrechi',
+    'API_KEY': '426321268557472',
+    'API_SECRET': 'WfGrz-eNOJHU5BWUm-PZRDj0Z54'
+}
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -47,6 +51,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'djoser',
     'cloudinary',
+    'cloudinary_storage',
     'drf_yasg',
     'account',
     'form',
@@ -153,7 +158,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = "account.User"
 
-
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 # EMAIL_BACKEND = "django.core.mail.backends.smtpt.EmailBackend"
 

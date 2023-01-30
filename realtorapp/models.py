@@ -1,11 +1,12 @@
 from django.db import models
 from phonenumber_field.modelfields import PhoneNumberField
+from cloudinary.models import CloudinaryField
 
 class HouseImages(models.Model):
     image = models.ImageField(upload_to='house_images/')
     name = models.CharField(max_length=100)
 
-class Houses(models.Model):
+class Houses(models.Model): 
     images = models.ManyToManyField(HouseImages, related_name='houses')
     title = models.CharField(max_length=100)
     description = models.CharField(max_length=250, blank=True, null=True)
