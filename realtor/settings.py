@@ -16,6 +16,7 @@ load_dotenv(find_dotenv())
 from django.utils.timezone import timedelta
 
 
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -24,10 +25,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = os.getenv('SECRET_KEY')
 
+
 CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': 'kingrechi',
-    'API_KEY': '426321268557472',
-    'API_SECRET': 'WfGrz-eNOJHU5BWUm-PZRDj0Z54'
+    'CLOUD_NAME': os.getenv('CLOUD_NAME'),
+    'API_KEY': os.getenv('CLOUD_API'),
+    'API_SECRET': os.getenv('CLOUD_SECRET_KEY'),
 }
 
 
