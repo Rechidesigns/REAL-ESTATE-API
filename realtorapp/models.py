@@ -1,6 +1,5 @@
 from django.db import models
 from phonenumber_field.modelfields import PhoneNumberField
-from cloudinary.models import CloudinaryField
 
 class HouseImages(models.Model):
     image = models.ImageField(upload_to='house_images/')

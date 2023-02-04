@@ -56,8 +56,8 @@ class HousesDetailView(APIView):
     Retrive, update or delete a Houses instance..
     """
 
-    authentication_classes=[JWTAuthentication]
-    permission_classes=[IsAdminOrReadOnly]
+    # authentication_classes=[JWTAuthentication]
+    # permission_classes=[IsAdminOrReadOnly]
 
     def get_object(self, house_id):
         """"Get a single instance using the provided house_id""" 
