@@ -56,8 +56,8 @@ class HousesDetailView(APIView):
     Retrive, update or delete a Houses instance..
     """
 
-    # authentication_classes=[JWTAuthentication]
-    # permission_classes=[IsAdminOrReadOnly]
+    authentication_classes=[JWTAuthentication]
+    permission_classes=[IsAdminOrReadOnly]
 
     def get_object(self, house_id):
         """"Get a single instance using the provided house_id""" 
@@ -94,7 +94,7 @@ class HousesDetailView(APIView):
     @action(methods=["DELETE"], detail=True)
     def delete(self, request, house_id, formart=None):
         obj = self.get_object(house_id)
-        if Houses.objects.filter(id=tenant_id).count() == 1:
+        if Houses.objects.filter(id=house_id).count() == 1:
 
             obj.delete()
             return Response(status=status.HTTP_204_NO_CONTENT)
@@ -184,6 +184,14 @@ class LandsDetailView(APIView):
     @action(methods=["DELETE"], detail=True)   
     def delete(self, request, land_id, format=None):
         obj = self.get_object(land_id)
-        if Lands.objects.filter(id=tenant_id).count() == 1:
-        obj.delete()
+        if Lands.objects.filter(id=land_id).count() == 1:
+            obj.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+    # @swagger_auto_schema(method="delete")
+    # @action(methods=["DELETE"], detail=True)   
+    # def delete(self, request, land_id, format=None):
+    #     obj = self.get_object(land_id)
+    #     obj.delete()
+    #     return Response(status=status.HTTP_204_NO_CONTENT)
